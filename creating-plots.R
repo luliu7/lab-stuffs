@@ -26,14 +26,14 @@ negimmrecovery = c(negimmData[14])
 origimmsensitivity = c(origimmData[8])
 #origimmrecovery = c(origimmData[14])
 
-len <- length(unlist(negallsensitivity))
+len <- length(unlist(negimmsensitivity))
 
 lineofnegs = rep("Negative", len)
 lineoforig = c(rep("Original", len))
 
 
 
-sensitivity <- append(negimmsensitivity, origimmsensitivity)
+sensitivity = append(unlist(negimmsensitivity), unlist(origimmsensitivity))
 finlen <- append(lineofnegs, lineoforig)
 
 immsensitivityframe <- data.frame(finlen, sensitivity)
@@ -41,7 +41,7 @@ immsensitivityframe <- data.frame(finlen, sensitivity)
 print(immsensitivityframe)
 ###### For imm only ###
 
-immsen = boxplot(PercentageTrainingSetSensitivity ~ finlen, immsensitivityframe)
+immsen = boxplot(sensitivity ~ finlen, immsensitivityframe)
 
 
 
