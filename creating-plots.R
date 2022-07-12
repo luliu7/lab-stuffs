@@ -16,7 +16,7 @@ negallData <-read.table("neg_all_methods_pCRMeval.txt.bed", header=TRUE, sep= "\
 negallsensitivity = c(negallData[8])
 negallrecovery = c(negallData[14])
 
-origallsensitivity = c(origallData[8])
+#origallsensitivity = c(origallData[8])
 #origallrecovery = c(origallData[14])
 
 
@@ -24,7 +24,7 @@ negimmsensitivity = c(negimmData[8])
 negimmrecovery = c(negimmData[14])
 
 origimmsensitivity = c(origimmData[8])
-#origimmrecovery = c(origimmData[14])
+origimmrecovery = c(origimmData[14])
 
 len <- length(unlist(negimmsensitivity))
 
@@ -33,24 +33,36 @@ lineoforig = c(rep("Original", len))
 
 
 
+###### For imm only ###
+
+#Percentage Training Set sensitiity
 sensitivity = append(unlist(negimmsensitivity), unlist(origimmsensitivity))
 finlen <- append(lineofnegs, lineoforig)
 
 immsensitivityframe <- data.frame(finlen, sensitivity)
 
-print(immsensitivityframe)
-###### For imm only ###
 
-immsen = boxplot(sensitivity ~ finlen, immsensitivityframe)
+immsen = boxplot(sensitivity ~ finlen, 
+                 immsensitivityframe,
+                 notch = TRUE,
+                 main = "Percent sensitivity")
+
+#Percent redfly recovery
+
+recovery = append(unlist(negimmrecovery), unlist(origimmrecovery))
+finlen <- append(lineofnegs, lineoforig)
+
+immrecoveryframe <- data.frame(finlen, recovery)
+
+
+immrec = boxplot(recovery ~ finlen, 
+                 immrecoveryframe,
+                 notch = TRUE,
+                 main = "Percent Redfly Recovery")
 
 
 
 
-box = boxplot(PercentageTrainingSetSensitivity ~ Method, 
-              negimmData,
-              notch = TRUE,
-              main = "Percent sensitivity")
-box
 
 boxrec = boxplot(PercentageRedflyRecovered ~ Method, 
               negimmData,
