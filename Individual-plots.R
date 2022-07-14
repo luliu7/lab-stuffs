@@ -1,4 +1,7 @@
 library(ggplot2)
+###Makes a bar graph of the % Redfly recovery and sensitivity for (highest and for each method)
+### Only compares between each method for these graphs
+
 
 #Makes a truth value here so I won't have to keep uncommenting things (`^`#)
 showmethods = FALSE

@@ -1,6 +1,7 @@
-#Test space
+###Makes a bar graph of the % Redfly recovery and sensitivity for original vs negative
+### Only compares between original and negative for these graphs
 
-#This adds the imm files into the enviornment
+#This adds the imm files into the environment
 negimmData <-read.table("neg_all_imm_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origimmData <- read.table("orig_imm_pCRMeval.txt.bed", header=TRUE, sep = "\t")
 

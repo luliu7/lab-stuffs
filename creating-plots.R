@@ -1,4 +1,5 @@
 library(ggplot2)
+###This program creates a simple box and whisker plot of negative and original for percent sensitivity and redfly recovery (for all methods together, imm only, and for each individual method) 
 
 #This adds the imm files into the enviornment
 negimmData <-read.table("neg_all_imm_pCRMeval.txt.bed", header=TRUE, sep= "\t")
