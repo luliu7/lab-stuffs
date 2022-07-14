@@ -36,7 +36,6 @@ allsensitivityframe <- data.frame(allfinlen, allsensitivity)
 
 allsen = boxplot(allsensitivity ~ allfinlen, 
                  allsensitivityframe,
-                 notch = TRUE,
                  main = "all Percent sensitivity")
 
 #Percent redfly recovery
@@ -49,7 +48,6 @@ allrecoveryframe <- data.frame(allfinlen, allrecovery)
 
 allrec = boxplot(allrecovery ~ allfinlen, 
                  allrecoveryframe,
-                 notch = TRUE,
                  main = "all Percent Redfly Recovery")
 
 
@@ -81,7 +79,6 @@ immsensitivityframe <- data.frame(immfinlen, immsensitivity)
 
 immsen = boxplot(immsensitivity ~ immfinlen, 
                  immsensitivityframe,
-                 notch = TRUE,
                  main = "imm Percent sensitivity")
 
 #Percent redfly recovery
@@ -94,7 +91,6 @@ immrecoveryframe <- data.frame(immfinlen, immrecovery)
 
 immrec = boxplot(immrecovery ~ immfinlen, 
                  immrecoveryframe,
-                 notch = TRUE,
                  main = "imm Percent Redfly Recovery")
 
 
@@ -117,22 +113,28 @@ immrec = boxplot(immrecovery ~ immfinlen,
 
 #boxrec = boxplot(PercentageRedflyRecovered ~ Method, 
 #              negimmData,
-#              notch = TRUE,
 #              main = "Percent redfly")
 #boxrec
 ##
 
-###### For all data ###
+###### For all originalk data (percents for each method)###
 
-#thing2 = boxplot(PercentageTrainingSetSensitivity ~ Method, 
-#                 negallData,
-#                 notch = TRUE,
-#                 main = "Percent sensitivity")
-#thing2
+thing3 = boxplot(PercentageTrainingSetSensitivity ~ Method, 
+                 origallData,
+                 main = "Original Percent sensitivity per method")
 
 
-#thing2rec = boxplot(PercentageRedflyRecovered ~ Method, 
-##                 negallData,
-  #               notch = TRUE,
-#                 main = "Percent redfly")
-#thing2rec
+thing3rec = boxplot(PercentageRedflyRecovered ~ Method, 
+                    origallData,
+                    main = "Original Percent redfly per method")
+
+###### For all negative data (percents for each method)###
+
+thing2 = boxplot(PercentageTrainingSetSensitivity ~ Method, 
+                 negallData,
+                 main = "Neg Percent sensitivity per method")
+
+
+thing2rec = boxplot(PercentageRedflyRecovered ~ Method, 
+                 negallData,
+                 main = "Neg Percent redfly per method")
