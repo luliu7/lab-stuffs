@@ -39,7 +39,7 @@ alls2 <- ggplot(data = cumalldata, aes(x = TsetName, y = PercentageTrainingSetSe
 alls2 + coord_flip() + labs(title = " All methods Percent Trainign sensitiviity")
 
 }
-
+#
 
 #For imm data concat
 
