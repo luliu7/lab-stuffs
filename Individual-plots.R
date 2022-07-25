@@ -4,7 +4,7 @@ library(ggplot2)
 
 
 #Makes a truth value here so I won't have to keep uncommenting things to view individual method breakdown vs combined (`^`#)
-showmethods = TRUE
+showmethods = FALSE
 
 #All is if all methods data table was downloaded (at time of writing, the SCRMShaw didn't finish running yet, and I didn't want to keep breaking my code)
 all = TRUE
