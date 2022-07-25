@@ -1,18 +1,21 @@
 ###Makes a bar graph of the % Redfly recovery and sensitivity for original vs negative
 ### Only compares between original and negative for these graphs
+library(ggplot2)
+all = TRUE
+
 
 #This adds the imm files into the environment
-negimmData <-read.table("neg_all_imm_pCRMeval.txt.bed", header=TRUE, sep= "\t")
-origimmData <- read.table("orig_imm_pCRMeval.txt.bed", header=TRUE, sep = "\t")
+negimmData <-read.table("neg_imm_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
+origimmData <- read.table("orig-imm-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
 
-negallData <-read.table("neg_all_methods_pCRMeval.txt.bed", header=TRUE, sep= "\t")
-origallData <- read.table("orig_allmethods_pCRMeval.txt.bed", header=TRUE, sep = "\t")
-
+if (all){
+  negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
+  origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
 
 #Creating data frames to put the data into one graph
 
 #For all data concat
-negallsensitivity = c(negallData[8])
+negallsensitivity = c(negallData[10])
 
 lenall <- length(unlist(negallsensitivity))
 
@@ -35,12 +38,12 @@ alls2 <- ggplot(data = cumalldata, aes(x = TsetName, y = PercentageTrainingSetSe
   geom_bar(stat = "identity", width = 0.5, position = position_dodge(0.6)) 
 alls2 + coord_flip() + labs(title = " All methods Percent Trainign sensitiviity")
 
-
+}
 
 
 #For imm data concat
 
-negimmsensitivity = c(negimmData[8])
+negimmsensitivity = c(negimmData[10])
 
 lenimm <- length(unlist(negimmsensitivity))
 

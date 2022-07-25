@@ -2,23 +2,25 @@ library(ggplot2)
 ###This program creates a simple box and whisker plot of negative and original for percent sensitivity and redfly recovery (for all methods together, imm only, and for each individual method) 
 
 #This adds the imm files into the enviornment
-negimmData <-read.table("neg_all_imm_pCRMeval.txt.bed", header=TRUE, sep= "\t")
-origimmData <- read.table("orig_imm_pCRMeval.txt.bed", header=TRUE, sep = "\t")
+negimmData <-read.table("neg_imm_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
+origimmData <- read.table("orig-imm-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
 
-negallData <-read.table("neg_all_methods_pCRMeval.txt.bed", header=TRUE, sep= "\t")
-origallData <- read.table("orig_allmethods_pCRMeval.txt.bed", header=TRUE, sep = "\t")
+negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
+origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
+all = TRUE
 
+if (all){
 
 #Creating data frames to put the data into one graph
 
 #box = boxplot(x values ~ y values) 
 #box = boxplot(all vs imm ~ actual percentage sensitivity) 
 
-negallsensitivity = c(negallData[8])
-negallrecovery = c(negallData[14])
+negallsensitivity = c(negallData[10])
+negallrecovery = c(negallData[16])
 
-origallsensitivity = c(origallData[8])
-origallrecovery = c(origallData[14])
+origallsensitivity = c(origallData[10])
+origallrecovery = c(origallData[16])
 
 lenall <- length(unlist(negallsensitivity))
 
@@ -51,16 +53,16 @@ allrec = boxplot(allrecovery ~ allfinlen,
                  allrecoveryframe,
                  main = "all Percent Redfly Recovery")
 
-
+}
 ################################################################
 
 
 
-negimmsensitivity = c(negimmData[8])
-negimmrecovery = c(negimmData[14])
+negimmsensitivity = c(negimmData[10])
+negimmrecovery = c(negimmData[16])
 
-origimmsensitivity = c(origimmData[8])
-origimmrecovery = c(origimmData[14])
+origimmsensitivity = c(origimmData[10])
+origimmrecovery = c(origimmData[16])
 
 lenimm <- length(unlist(negimmsensitivity))
 
@@ -110,7 +112,7 @@ immrec = boxplot(immrecovery ~ immfinlen,
 
 
 
-
+if (all){
 
 #boxrec = boxplot(PercentageRedflyRecovered ~ Method, 
 #              negimmData,
@@ -139,3 +141,4 @@ thing2 = boxplot(PercentageTrainingSetSensitivity ~ Method,
 thing2rec = boxplot(PercentageRedflyRecovered ~ Method, 
                  negallData,
                  main = "Neg Percent redfly per method")
+}
