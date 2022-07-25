@@ -1,7 +1,7 @@
-###Makes a bar graph of the % Redfly recovery and sensitivity for original vs negative
+###Makes a bar graph of the Percent Expression Pattern Recall and Percent Expression Pattern Precision for original vs negative
 ### Only compares between original and negative for these graphs
 
-#NOTE: Sometimes All Methods Percent Redfly recovery does not show on the plot (idk why)
+#NOTE: Sometimes All Methods Percent Expression Pattern Precision does not show on the plot (idk why)
 #You must rerun line 37 individually (The functions and whatnot work, it's just R acting weird?)
 
 library(ggplot2)

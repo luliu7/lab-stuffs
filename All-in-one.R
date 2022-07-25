@@ -1,4 +1,5 @@
-#All plots on one plot... hmm
+#All plots on one plot... 
+
 
 
 library(ggplot2)
@@ -11,6 +12,7 @@ origimmData <- read.table("orig-imm-modified_pCRMeval.txt.bed", header=TRUE, sep
 negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
 all = TRUE
+par(mfrow=c(1,4)) #puts 4 graphs on same thingy
 
 if (all){
   
@@ -56,19 +58,19 @@ if (all){
   
   
   
-  par(mfrow=c(1,4)) #puts 4 graphs on same thingy
-  boxplot(percentageExpressionPatternRecall ~ Dset, 
-          cumalldata,
-          main = "all Percent Expression Pattern Recall")
-  boxplot(percentageExpressionPatternPrecision ~ Dset, 
-          cumalldata,
-          main = "all Percent Expression Pattern Precision")
-  boxplot(PercentageTrainingSetSensitivity ~ Dset, 
-          cumalldata,
-          main = "all Percent sensitivity")
-  boxplot(PercentageRedflyRecovered ~ Dset, 
-          cumalldata,
-          main = "all Percent Redfly Recovery")
+#  par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+#  boxplot(percentageExpressionPatternRecall ~ Dset, 
+#          cumalldata,
+#          main = "all Percent Expression Pattern Recall")
+#  boxplot(percentageExpressionPatternPrecision ~ Dset, 
+#          cumalldata,
+#          main = "all Percent Expression Pattern Precision")
+#  boxplot(PercentageTrainingSetSensitivity ~ Dset, 
+#          cumalldata,
+#          main = "all Percent sensitivity")
+#  boxplot(PercentageRedflyRecovered ~ Dset, 
+#            cumalldata,
+#          main = "all Percent Redfly Recovery")
   
 }
 ################################################################
@@ -116,17 +118,17 @@ immper = boxplot(percentageExpressionPatternPrecision ~ Dset,
 
 
 
-par(mfrow=c(1,4)) #puts 4 graphs on same thingy
-boxplot(percentageExpressionPatternRecall ~ Dset, 
-        cumimmdata,
-        main = "imm Percent Expression Pattern Recall")
-boxplot(percentageExpressionPatternPrecision ~ Dset, 
-        cumimmdata,
-        main = "imm Percent Expression Pattern Precision")
-boxplot(PercentageTrainingSetSensitivity ~ Dset, 
-        cumimmdata,
-        main = "imm Percent sensitivity")
-boxplot(PercentageRedflyRecovered ~ Dset, 
-        cumimmdata,
-        main = "imm Percent Redfly Recovery")
+#par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+#boxplot(percentageExpressionPatternRecall ~ Dset, 
+#        cumimmdata,
+#        main = "imm Percent Expression Pattern Recall")
+#boxplot(percentageExpressionPatternPrecision ~ Dset, 
+#        cumimmdata,
+#        main = "imm Percent Expression Pattern Precision")
+#boxplot(PercentageTrainingSetSensitivity ~ Dset, 
+#        cumimmdata,
+#        main = "imm Percent sensitivity")
+#boxplot(PercentageRedflyRecovered ~ Dset, 
+#        cumimmdata,
+#        main = "imm Percent Redfly Recovery")
 
