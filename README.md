@@ -42,7 +42,7 @@ ____________________________
   
 ________________________________
 * **[All-in-one.R](https://github.com/luliu7/lab-stuffs/blob/main/boxplot-othertwo.R)** places the boxplots from [creating-plots.R](https://github.com/luliu7/lab-stuffs/blob/main/creating-plots.R) and [boxplot-othertwo.R](https://github.com/luliu7/lab-stuffs/blob/main/boxplot-othertwo.R) onto one single plot
- * For all methods and Imm methods, in order of:
+ * For all methods and Imm methods (neg vs orig), in order of:
   * Percent Sensitivity
   * Percent Redfly Recovery
   * Percent Expression Pattern Recall
