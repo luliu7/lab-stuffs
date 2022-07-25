@@ -1,5 +1,9 @@
 ###Makes a bar graph of the % Redfly recovery and sensitivity for original vs negative
 ### Only compares between original and negative for these graphs
+
+#NOTE: Sometimes All Methods Percent Redfly recovery does not show on the plot (idk why)
+#You must rerun line 37 individually (The functions and whatnot work, it's just R acting weird?)
+
 library(ggplot2)
 all = TRUE
 
@@ -15,15 +19,12 @@ if (all){
   #Creating data frames to put the data into one graph
   
   #For all data concat
-  negallsensitivity = c(negallData[10])
-  
-  lenall <- length(unlist(negallsensitivity))
+  lenall <- length(unlist(negallData['percentageExpressionPatternPrecision']))
   
   alllineofnegs = rep("Negative", lenall)
   negallData$Dset <- alllineofnegs
   alllineoforig = c(rep("Original", lenall))
   origallData$Dset <- alllineoforig
-  
   
   cumalldata <-rbind(origallData, negallData)
   
@@ -31,6 +32,8 @@ if (all){
   #Making a graph of all methods % Expression Pattern Precision for each tset (Comparing original to negative)
   alls1 <- ggplot(data = cumalldata, aes(x = TsetName, y = percentageExpressionPatternPrecision, fill = Dset)) +
     geom_bar(stat = "identity", width = 0.5, position = position_dodge(0.6)) 
+
+  #RERUN THE FOLLOWING LINE IF PLOT DOES NOT SHOW
   alls1 + coord_flip() + labs(title = " All methods Percent Expression Pattern Precision")
   
   #Making a graph of all methods % Expression Pattern Recall for each tset (Comparing original to negative)
@@ -43,9 +46,7 @@ if (all){
 
 #For imm data concat
 
-negimmsensitivity = c(negimmData[10])
-
-lenimm <- length(unlist(negimmsensitivity))
+lenimm <- length(unlist(negimmData['percentageExpressionPatternPrecision']))
 
 immlineofnegs = rep("Negative", lenimm)
 negimmData$Dset <- immlineofnegs

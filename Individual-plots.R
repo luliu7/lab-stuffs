@@ -3,8 +3,10 @@ library(ggplot2)
 ### Only compares between each method for these graphs
 
 
-#Makes a truth value here so I won't have to keep uncommenting things (`^`#)
+#Makes a truth value here so I won't have to keep uncommenting things to view individual method breakdown vs combined (`^`#)
 showmethods = TRUE
+
+#All is if all methods data table was downloaded (at time of writing, the SCRMShaw didn't finish running yet, and I didn't want to keep breaking my code)
 all = TRUE
 
 

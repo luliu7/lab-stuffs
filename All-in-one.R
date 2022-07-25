@@ -10,64 +10,71 @@ origimmData <- read.table("orig-imm-modified_pCRMeval.txt.bed", header=TRUE, sep
 
 negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
-all = FALSE
+all = TRUE
 
 if (all){
   
-  #Creating data frames to put the data into one graph
-  
-  #box = boxplot(x values ~ y values) 
-  #box = boxplot(all vs imm ~ actual percentage sensitivity) 
-  
-  negallsensitivity = c(negallData[10])
-  negallrecovery = c(negallData[16])
-  
-  origallsensitivity = c(origallData[10])
-  origallrecovery = c(origallData[16])
-  
-  lenall <- length(unlist(negallsensitivity))
+  #Creating the list of "original" or "neg" onto one dataframe for easier access
+  lenall <- length(unlist(negallData['PercentageTrainingSetSensitivity']))
   
   alllineofnegs = rep("Negative", lenall)
+  negallData$Dset <- alllineofnegs
   alllineoforig = c(rep("Original", lenall))
+  origallData$Dset <- alllineoforig
+  
+  cumalldata <-rbind(origallData, negallData)
   
   
   ###### For all methods only ###
   
   #Percentage Training Set sensitiity
-  allsensitivity = append(unlist(negallsensitivity), unlist(origallsensitivity))
-  allfinlen <- append(alllineofnegs, alllineoforig)
   
-  allsensitivityframe <- data.frame(allfinlen, allsensitivity)
-  
-  
-  allsen = boxplot(allsensitivity ~ allfinlen, 
-                   allsensitivityframe,
+  allsen = boxplot(PercentageTrainingSetSensitivity ~ Dset, 
+                   cumalldata,
                    main = "all Percent sensitivity")
+  
   
   #Percent redfly recovery
   
-  allrecovery = append(unlist(negallrecovery), unlist(origallrecovery))
-  allfinlen <- append(alllineofnegs, alllineoforig)
-  
-  allrecoveryframe <- data.frame(allfinlen, allrecovery)
-  
-  
-  allrec = boxplot(allrecovery ~ allfinlen, 
-                   allrecoveryframe,
+  allrec = boxplot(PercentageRedflyRecovered ~ Dset, 
+                   cumalldata,
                    main = "all Percent Redfly Recovery")
+  
+  
+  #Percent Expression Pattern Recall
+  allexp = boxplot(percentageExpressionPatternRecall ~ Dset, 
+                   cumalldata,
+                   main = "all Percent Expression Pattern Recall")
+  
+  #Percent Expression Pattern Precision
+  
+  allper = boxplot(percentageExpressionPatternPrecision ~ Dset, 
+                   cumalldata,
+                   main = "all Percent Expression Pattern Precision")
+  
+  
+  
+  
+  
+  par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+  boxplot(percentageExpressionPatternRecall ~ Dset, 
+          cumalldata,
+          main = "all Percent Expression Pattern Recall")
+  boxplot(percentageExpressionPatternPrecision ~ Dset, 
+          cumalldata,
+          main = "all Percent Expression Pattern Precision")
+  boxplot(PercentageTrainingSetSensitivity ~ Dset, 
+          cumalldata,
+          main = "all Percent sensitivity")
+  boxplot(PercentageRedflyRecovered ~ Dset, 
+          cumalldata,
+          main = "all Percent Redfly Recovery")
   
 }
 ################################################################
 
 
-
-#negimmsensitivity = c(negimmData[PercentageTrainingSetSensitivity])
-#negimmrecovery = c(negimmData[PercentageRedflyRecovered])
-
-#origimmsensitivity = c(origimmData[PercentageTrainingSetSensitivity])
-#origimmrecovery = c(origimmData[PercentageRedflyRecovered])
-
-
+#Creating the list of "original" or "neg" onto one dataframe for easier access
 lenimm <- length(unlist(negimmData['PercentageTrainingSetSensitivity']))
 
 immlineofnegs = rep("Negative", lenimm)
@@ -122,3 +129,4 @@ boxplot(PercentageTrainingSetSensitivity ~ Dset,
 boxplot(PercentageRedflyRecovered ~ Dset, 
         cumimmdata,
         main = "imm Percent Redfly Recovery")
+
