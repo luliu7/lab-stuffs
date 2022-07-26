@@ -1,0 +1,11 @@
+"% Training set (J) is (I)/(C). (training set recovered/testsize)_"
+"Redfly recovery is (O)/(H) (Redfly recovery / SCRMs - TSET Recovered (Take out from number) (how many of these got same stuffs from redfly?)"
+"Expression pattern precision: AA/AB (recovered crm own group/belong to any group) (drive expression in this set/drive expression in other places"
+"Expression pattern recall: AA/V (number belong to own group/total number we know)"
+
+
+Expect: Precision to go up because 
+
+
+* Absoljute nume
+* Are some specific training sets better/worse
