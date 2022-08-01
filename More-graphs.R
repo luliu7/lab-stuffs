@@ -8,13 +8,15 @@ library(ggplot2)
 #This adds the imm files into the enviornment
 negimmData <-read.table("neg_imm_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origimmData <- read.table("orig-imm-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
-
-negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
-origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
-all = TRUE
-par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+all = FALSE
 
 if (all){
+negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
+origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
+
+par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+
+
   
   #Creating the list of "original" or "neg" onto one dataframe for easier access
   lenall <- length(unlist(negallData['PercentageTrainingSetSensitivity']))
@@ -72,7 +74,7 @@ if (all){
   #            cumalldata,
   #          main = "all Percent Redfly Recovery")
   
-}
+
 ################################################################
 
 
@@ -134,7 +136,7 @@ immper = boxplot(percentageExpressionPatternPrecision ~ Dset,
 
 
 par(mfrow=c(1,1))
-
+}
 
 negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
