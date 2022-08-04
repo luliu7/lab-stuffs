@@ -39,7 +39,7 @@ alls1 + coord_flip() + labs(title = " All methods Percent Redfly Recovery")
 
 #Making a graph of all methods % sensitivity for each tset (Comparing original to negative)
 alls2 <- ggplot(data = cumalldata, aes(x = TsetName, y = PercentageTrainingSetSensitivity, fill = Dset)) +
-  geom_bar(stat = "identity", width = 0.5, position = position_dodge(0.6)) 
+  geom_bar(stat = "identity", width = 0.5, position = position_dodge(0.5)) 
 alls2 + coord_flip() + labs(title = " All methods Percent Trainign sensitiviity")
 
 }

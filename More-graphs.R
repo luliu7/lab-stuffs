@@ -8,13 +8,13 @@ library(ggplot2)
 #This adds the imm files into the enviornment
 negimmData <-read.table("neg_imm_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origimmData <- read.table("orig-imm-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
-all = FALSE
+all = TRUE
 
 if (all){
 negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
 
-par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+#par(mfrow=c(1,4)) #puts 4 graphs on same thingy
 
 
   
@@ -33,29 +33,36 @@ par(mfrow=c(1,4)) #puts 4 graphs on same thingy
   
   #Percentage Training Set sensitiity
   
-  allsen = boxplot(PercentageTrainingSetSensitivity ~ Dset, 
-                   cumalldata,
-                   main = "all Percent sensitivity")
+  ggplot(cumalldata, aes(x = Method, y = PercentageTrainingSetSensitivity, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Sensitivity")
+
+  ggplot(cumalldata, aes(x = "", y = PercentageTrainingSetSensitivity, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Sensitivity")+ xlab("Cumulative")
   
   
   #Percent redfly recovery
   
-  allrec = boxplot(PercentageRedflyRecovered ~ Dset, 
-                   cumalldata,
-                   main = "all Percent Redfly Recovery")
+  ggplot(cumalldata, aes(x = Method, y = PercentageRedflyRecovered, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("all Percent Redfly Recovery")
   
+  ggplot(cumalldata, aes(x = "", y = PercentageRedflyRecovered, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("all Percent Redfly Recovery")+ xlab("Cumulative")
   
   #Percent Expression Pattern Recall
-  allexp = boxplot(percentageExpressionPatternRecall ~ Dset, 
-                   cumalldata,
-                   main = "all Percent Expression Pattern Recall")
+  
+  ggplot(cumalldata, aes(x = Method, y = percentageExpressionPatternRecall, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Recall")
+  
+  ggplot(cumalldata, aes(x = "", y = percentageExpressionPatternRecall, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Recall")+ xlab("Cumulative")
   
   #Percent Expression Pattern Precision
+  #par(mfrow=c(1,2))
+  ggplot(cumalldata, aes(x = Method, y = percentageExpressionPatternPrecision, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Precision")
   
-  allper = boxplot(percentageExpressionPatternPrecision ~ Dset, 
-                   cumalldata,
-                   main = "all Percent Expression Pattern Precision")
-  
+  ggplot(cumalldata, aes(x = "", y = percentageExpressionPatternPrecision, fill = Dset)) +
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Precision") + xlab("Cumulative")
   
   
   
@@ -186,14 +193,57 @@ newcumalldata$Dset <- dsetline
 #newcumalldata <-rbind(cumallData, negallData)
 
 
-ggplot(newcumalldata, aes(x=names, y=stuffs, fill=Dset)) + 
-  geom_boxplot() + labs(fill = "Type of\nDataset", title="Plot of percentages for different parts",
+ggplot(newcumalldata, aes(x=names, y=stuffs, fill=Dset)) + geom_point(position=position_jitterdodge(), size = 0.2) +
+  geom_boxplot(alpha = 0.8) + labs(fill = "Type of\nDataset", title="Plot of percentages for different parts",
                        x ="", y = "Percentage") + theme(axis.text.x = element_text(size = 6)) 
 
 
+#Shrinking the dset to 220 units (average of all three methods)
+#for(x in negallData$TsetName)
+#dataframe <- data.frame(negimmData$TsetName)
 
 
 # Change line types and point shapes
-plot <- ggplot(cumalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
+recallplot <- ggplot(cumalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
 
-plot + scale_color_grey() + theme_classic() + theme(legend.position="none")
+recallplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Recall per tset")
+
+
+precisionplot <- ggplot(cumalldata, aes(x=Dset, y=percentageExpressionPatternPrecision, group=TsetName))+ geom_line(aes(color=TsetName))
+
+precisionplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Precision per tset")
+
+
+recoveryplot <- ggplot(cumalldata, aes(x=Dset, y=PercentageRedflyRecovered, group=TsetName))+ geom_line(aes(color=TsetName))
+
+recoveryplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Redfly Recovery per tset")
+
+
+
+
+negses <- c(unlist(negimmData['PercentageTrainingSetSensitivity']))
+origses <- c(unlist(origimmData['PercentageTrainingSetSensitivity']))
+tsetlis <- c(unlist(origimmData['TsetName']))
+
+ts <- c(rep(tsetlis, 2))
+listses <- c(negses,origses)
+
+alllineofnegs = c(rep("Negative", lenimm))
+alllineoforig = c(rep("Original", lenimm))
+
+listlin <- c(alllineofnegs,alllineoforig)
+
+df <- data.frame(listses, listlin,ts)
+senssplot <- ggplot(df, aes(x=listlin, y=listses, group=ts))+ geom_line(aes(color=ts))
+
+senssplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset")
+
+
+
+sensplot <- ggplot(cumalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=Method))+ geom_line(aes(color=TsetName))
+
+sensplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset")
+
+sensss <- lines(cumalldata$TsetName, cumalldata$PercentageTrainingSetSensitivity, type='l') 
+ggplot(cumalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=TsetName, color=TsetName)) +
+  geom_line()
