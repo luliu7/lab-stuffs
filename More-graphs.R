@@ -31,6 +31,33 @@ origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep
   
   ###### For all methods only ###
   
+  library(plyr)
+  mu <- ddply(cumalldata, "Dset", summarise, grp.mean=mean(SCRMs))
+  head(mu)
+  
+  #Makes a histogram to compare number of scrmshaw hits
+  ggplot(cumalldata, aes(x=SCRMs, color=Dset, fill=Dset)) +
+    geom_histogram(position="identity", alpha=0.5)+
+    #geom_histogram(aes(y=..density..), position="identity", alpha=0.5)+
+    geom_density(alpha=0.2)+
+    geom_vline(data=mu, aes(xintercept=grp.mean, color=Dset),
+               linetype="dashed")+
+    scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+    scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+    labs(title="Comparing Number of Hits Between Negative and Original",x="Number of hits from SCRMshaw", y = "Count")+
+    #labs(title="Comparing Number of Hits Between Negative and Original",x="Number of hits from SCRMshaw", y = "Density")+
+    theme_classic()
+  
+  #Makes density plot for compare scrmshaw hits
+  ggplot(cumalldata, aes(x=SCRMs, color=Dset, fill = Dset)) +
+    geom_density( alpha = 0.2)+
+    geom_vline(data=mu, aes(xintercept=grp.mean, color=Dset),
+               linetype="dashed")+
+    scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+    scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))
+    
+  
+  
   #Percentage Training Set sensitiity
   
   ggplot(cumalldata, aes(x = Method, y = PercentageTrainingSetSensitivity, fill = Dset)) +
@@ -67,13 +94,13 @@ origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep
   
   
   
-  #  par(mfrow=c(1,4)) #puts 4 graphs on same thingy
-  #  boxplot(percentageExpressionPatternRecall ~ Dset, 
-  #          cumalldata,
-  #          main = "all Percent Expression Pattern Recall")
-  #  boxplot(percentageExpressionPatternPrecision ~ Dset, 
-  #          cumalldata,
-  #          main = "all Percent Expression Pattern Precision")
+    par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+    boxplot(percentageExpressionPatternRecall ~ Dset, 
+            cumalldata,
+            main = "all Percent Expression Pattern Recall")
+    boxplot(percentageExpressionPatternPrecision ~ Dset, 
+            cumalldata,
+            main = "all Percent Expression Pattern Precision")
   #  boxplot(PercentageTrainingSetSensitivity ~ Dset, 
   #          cumalldata,
   #          main = "all Percent sensitivity")
@@ -94,6 +121,8 @@ immlineoforig = c(rep("Original", lenimm))
 origimmData$Dset <- immlineoforig
 
 cumimmdata <-rbind(origimmData, negimmData)
+
+dataB <- dataA[, c("P1", "xyz", "acdc")]
 
 
 ###### For imm only ###
@@ -220,7 +249,7 @@ recoveryplot + scale_color_grey() + theme_classic() + theme(legend.position="non
 
 
 
-
+# Sensitivity plot for imm only
 negses <- c(unlist(negimmData['PercentageTrainingSetSensitivity']))
 origses <- c(unlist(origimmData['PercentageTrainingSetSensitivity']))
 tsetlis <- c(unlist(origimmData['TsetName']))
@@ -228,19 +257,19 @@ tsetlis <- c(unlist(origimmData['TsetName']))
 ts <- c(rep(tsetlis, 2))
 listses <- c(negses,origses)
 
-alllineofnegs = c(rep("Negative", lenimm))
-alllineoforig = c(rep("Original", lenimm))
+alllineofnegs = c(rep("Negative", length(tsetlis)))
+alllineoforig = c(rep("Original", length(tsetlis)))
 
 listlin <- c(alllineofnegs,alllineoforig)
 
 df <- data.frame(listses, listlin,ts)
 senssplot <- ggplot(df, aes(x=listlin, y=listses, group=ts))+ geom_line(aes(color=ts))
 
-senssplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset")
+senssplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset")
 
 
 
-sensplot <- ggplot(cumalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=Method))+ geom_line(aes(color=TsetName))
+sensplot <- ggplot(cumalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=TsetName))+ geom_line(aes(color=TsetName))
 
 sensplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset")
 
