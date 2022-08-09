@@ -58,7 +58,7 @@ origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep
     
   
   
-  #Percentage Training Set sensitiity
+#  #Percentage Training Set sensitiity
   
   ggplot(cumalldata, aes(x = Method, y = PercentageTrainingSetSensitivity, fill = Dset)) +
     geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Sensitivity")
@@ -94,13 +94,13 @@ origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep
   
   
   
-    par(mfrow=c(1,4)) #puts 4 graphs on same thingy
-    boxplot(percentageExpressionPatternRecall ~ Dset, 
-            cumalldata,
-            main = "all Percent Expression Pattern Recall")
-    boxplot(percentageExpressionPatternPrecision ~ Dset, 
-            cumalldata,
-            main = "all Percent Expression Pattern Precision")
+ #   par(mfrow=c(1,4)) #puts 4 graphs on same thingy
+#    boxplot(percentageExpressionPatternRecall ~ Dset, 
+#            cumalldata,
+#            main = "all Percent Expression Pattern Recall")
+#    boxplot(percentageExpressionPatternPrecision ~ Dset, 
+#            cumalldata,
+#            main = "all Percent Expression Pattern Precision")
   #  boxplot(PercentageTrainingSetSensitivity ~ Dset, 
   #          cumalldata,
   #          main = "all Percent sensitivity")
@@ -113,44 +113,44 @@ origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep
 
 
 #Creating the list of "original" or "neg" onto one dataframe for easier access
-lenimm <- length(unlist(negimmData['PercentageTrainingSetSensitivity']))
+#lenimm <- length(unlist(negimmData['PercentageTrainingSetSensitivity']))
 
-immlineofnegs = rep("Negative", lenimm)
-negimmData$Dset <- immlineofnegs
-immlineoforig = c(rep("Original", lenimm))
-origimmData$Dset <- immlineoforig
+#immlineofnegs = rep("Negative", lenimm)
+#negimmData$Dset <- immlineofnegs
+#immlineoforig = c(rep("Original", lenimm))
+#origimmData$Dset <- immlineoforig
 
-cumimmdata <-rbind(origimmData, negimmData)
+#cumimmdata <-rbind(origimmData, negimmData)
 
-dataB <- dataA[, c("P1", "xyz", "acdc")]
+#dataB <- dataA[, c("P1", "xyz", "acdc")]
 
 
 ###### For imm only ###
 
 #Percentage Training Set sensitiity
 
-immsen = boxplot(PercentageTrainingSetSensitivity ~ Dset, 
-                 cumimmdata,
-                 main = "imm Percent sensitivity")
+#immsen = boxplot(PercentageTrainingSetSensitivity ~ Dset, 
+#                 cumimmdata,
+#                 main = "imm Percent sensitivity")
 
 
 #Percent redfly recovery
 
-immrec = boxplot(PercentageRedflyRecovered ~ Dset, 
-                 cumimmdata,
-                 main = "imm Percent Redfly Recovery")
+#immrec = boxplot(PercentageRedflyRecovered ~ Dset, 
+#                 cumimmdata,
+#                 main = "imm Percent Redfly Recovery")
 
 
 #Percent Expression Pattern Recall
-immexp = boxplot(percentageExpressionPatternRecall ~ Dset, 
-                 cumimmdata,
-                 main = "imm Percent Expression Pattern Recall")
+#immexp = boxplot(percentageExpressionPatternRecall ~ Dset, 
+#                 cumimmdata,
+#                 main = "imm Percent Expression Pattern Recall")
 
 #Percent Expression Pattern Precision
 
-immper = boxplot(percentageExpressionPatternPrecision ~ Dset, 
-                 cumimmdata,
-                 main = "imm Percent Expression Pattern Precision")
+#immper = boxplot(percentageExpressionPatternPrecision ~ Dset, 
+#                 cumimmdata,
+#                 main = "imm Percent Expression Pattern Precision")
 
 
 
@@ -171,7 +171,7 @@ immper = boxplot(percentageExpressionPatternPrecision ~ Dset,
 #        main = "imm Percent Redfly Recovery")
 
 
-par(mfrow=c(1,1))
+#par(mfrow=c(1,1))
 }
 
 negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
