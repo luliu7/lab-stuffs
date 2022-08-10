@@ -61,35 +61,35 @@ origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep
 #  #Percentage Training Set sensitiity
   
   ggplot(cumalldata, aes(x = Method, y = PercentageTrainingSetSensitivity, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Sensitivity")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Sensitivity")+ stat_compare_means(aes(label =  ..p.signif..))
 
   ggplot(cumalldata, aes(x = "", y = PercentageTrainingSetSensitivity, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Sensitivity")+ xlab("Cumulative")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Sensitivity")+ xlab("Cumulative")+ stat_compare_means(aes(label =  ..p.signif..))
   
   
   #Percent redfly recovery
   
   ggplot(cumalldata, aes(x = Method, y = PercentageRedflyRecovered, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("all Percent Redfly Recovery")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("all Percent Redfly Recovery")+ stat_compare_means(aes(label =  ..p.signif..))
   
   ggplot(cumalldata, aes(x = "", y = PercentageRedflyRecovered, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("all Percent Redfly Recovery")+ xlab("Cumulative")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("all Percent Redfly Recovery")+ xlab("Cumulative")+ stat_compare_means(aes(label =  ..p.signif..))
   
   #Percent Expression Pattern Recall
   
   ggplot(cumalldata, aes(x = Method, y = percentageExpressionPatternRecall, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Recall")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Recall")+ stat_compare_means(aes(label =  ..p.signif..))
   
   ggplot(cumalldata, aes(x = "", y = percentageExpressionPatternRecall, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Recall")+ xlab("Cumulative")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Recall")+ xlab("Cumulative")+ stat_compare_means(aes(label =  ..p.signif..))
   
   #Percent Expression Pattern Precision
   #par(mfrow=c(1,2))
   ggplot(cumalldata, aes(x = Method, y = percentageExpressionPatternPrecision, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Precision")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Precision")+ stat_compare_means(aes(label =  ..p.signif..))
   
   ggplot(cumalldata, aes(x = "", y = percentageExpressionPatternPrecision, fill = Dset)) +
-    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Precision") + xlab("Cumulative")
+    geom_boxplot()+ geom_point(position=position_jitterdodge(), color = "black", size = 0.3) + ggtitle("All Percent Expression Pattern Precision") + xlab("Cumulative")+ stat_compare_means(aes(label =  ..p.signif..))
   
   
   

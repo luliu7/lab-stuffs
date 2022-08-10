@@ -1,10 +1,10 @@
 
-
-
 library(ggplot2)
+library(ggpubr)
+
 ###This program creates a simple box and whisker plot of negative and original for percent sensitivity and redfly recovery (for all methods together, imm only, and for each individual method) 
 
-x <- read.table("clipboard", sep="\t", row.names=TRUE)
+#x <- read.table("clipboard", sep="\t", row.names=TRUE)
 
 #This adds the imm files into the enviornment
 negimmData <-read.table("neg_imm_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
@@ -36,6 +36,9 @@ pacalldata <-rbind(cumalldata[(lenall/3*2 + 1):(lenall/3*3),], cumalldata[(lenal
 senssplot <- ggplot(immalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=TsetName))+ geom_line(aes(color=TsetName))
 
 senssplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset for imm")
+
+#####Below line has boxplot with lineplot
+#ggpaired(immalldata, x = "Dset", y = "PercentageRedflyRecovered", color = "Dset")+stat_compare_means(paired = TRUE)
 
 #Hex
 senssplot <- ggplot(hexalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=TsetName))+ geom_line(aes(color=TsetName))
