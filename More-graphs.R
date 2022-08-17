@@ -298,6 +298,6 @@ sensplot <- ggplot(cumalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, g
 
 sensplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset")
 
-sensss <- lines(cumalldata$TsetName, cumalldata$PercentageTrainingSetSensitivity, type='l') 
-ggplot(cumalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=TsetName, color=TsetName)) +
-  geom_line()
+#sensss <- lines(cumalldata$TsetName, cumalldata$PercentageTrainingSetSensitivity, type='l') 
+#ggplot(cumalldata, aes(x=Dset, y=PercentageTrainingSetSensitivity, group=TsetName, color=TsetName)) +
+#  geom_line()
