@@ -53,19 +53,59 @@ senspacsplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percen
 
 ggarrange(sensimmsplot+ theme(legend.position="none"),senshexsplot+ theme(legend.position="none"),senspacsplot+ theme(legend.position="none"), labels = c("Imm", "Hexmcd", "Pac"), ncol = 3, nrow = 1)
 
-#Recall
-#imm
-senssplot <- ggplot(immalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
 
-senssplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Recall per tset for imm")
+
+#Redfly Recovery
+#imm
+rrimmplot <- ggplot(immalldata, aes(x=Dset, y=PercentageRedflyRecovered, group=TsetName))+ geom_line(aes(color=TsetName))
+
+rrimmplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Redfly Recovery per tset for imm")
 
 #Hex
-senssplot <- ggplot(hexalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
+rrhexplot <- ggplot(hexalldata, aes(x=Dset, y=PercentageRedflyRecovered, group=TsetName))+ geom_line(aes(color=TsetName))
 
-senssplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Recall per tset for hexmcd")
+rrhexplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Redfly Recovery per tset for hexmcd")
 
 #pac
-senssplot <- ggplot(pacalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
+rrpacplot <- ggplot(pacalldata, aes(x=Dset, y=PercentageRedflyRecovered, group=TsetName))+ geom_line(aes(color=TsetName))
 
-senssplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Recall per tset for pac")
+rrpacplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Redfly Recovery per tset for pac")
+ggarrange(rrimmplot+ theme(legend.position="none"),rrhexplot+ theme(legend.position="none"),rrpacplot+ theme(legend.position="none"), labels = c("Imm", "Hexmcd", "Pac"), ncol = 3, nrow = 1)
+
+
+#Expression Pattern Precision
+#imm
+preimmplot <- ggplot(immalldata, aes(x=Dset, y=ExpectedpercentageExpressionPatternPrecision, group=TsetName))+ geom_line(aes(color=TsetName))
+
+preimmplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Precision per tset for imm")
+
+#Hex
+prehexplot <- ggplot(hexalldata, aes(x=Dset, y=ExpectedpercentageExpressionPatternPrecision, group=TsetName))+ geom_line(aes(color=TsetName))
+
+prehexplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Precision per tset for hexmcd")
+
+#pac
+prepacplot <- ggplot(pacalldata, aes(x=Dset, y=ExpectedpercentageExpressionPatternPrecision, group=TsetName))+ geom_line(aes(color=TsetName))
+
+prepacplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Precision per tset for pac")
+ggarrange(preimmplot+ theme(legend.position="none"),prehexplot+ theme(legend.position="none"),prepacplot+ theme(legend.position="none"), labels = c("Imm", "Hexmcd", "Pac"), ncol = 3, nrow = 1)
+
+
+
+#Recall
+#imm
+recimmplot <- ggplot(immalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
+
+recimmplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Recall per tset for imm")
+
+#Hex
+rechexplot <- ggplot(hexalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
+
+rechexplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Recall per tset for hexmcd")
+
+#pac
+recpacplot <- ggplot(pacalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
+
+recpacplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Recall per tset for pac")
+ggarrange(recimmplot+ theme(legend.position="none"),rechexplot+ theme(legend.position="none"),recpacplot+ theme(legend.position="none"), labels = c("Imm", "Hexmcd", "Pac"), ncol = 3, nrow = 1)
 
