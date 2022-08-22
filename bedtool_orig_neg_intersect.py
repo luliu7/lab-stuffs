@@ -122,15 +122,17 @@ lisofstufftorun = ["adult_brain",
                    "visceral.mapping1",
                    "wing.mapping2"]
 
-writer = open("results.txt", 'w')
-writer.write("Creates a file that will write lines (to fix header later)\n")
+writer = open("directintersectresults.txt", 'w')
+writer.write("intersect of neg and original with each other only\n")
 writer.close()
 
-appe = open("results.txt", 'a')
+appe = open("directintersectresults.txt", 'a')
 
 #Helper functions
 def countlines(filename):
     with open(filename, 'r') as fp:
+        if not fp.read(1):
+            return 0
         for count, line in enumerate(fp):
             pass
 
@@ -156,9 +158,9 @@ for x in lisofstufftorun: #For each tset
         for z in typesss: #For neg vs orig
 
             if z == "neg":
-                res = "finalanalysis/negorigpureintersect/origsmallersetrun.bed"
+                res = "finalanalysis/negorigpureintersect/neg-all-modified-slurm-output-no-meso-fat-larv-meso.bed"
             else:
-                res = "finalanalysis/negorigpureintersect/negsmallersetrun.bed"
+                res = "finalanalysis/negorigpureintersect/orig-all-modified-slurm-output-no-meso-fat-larv-meso.bed"
 
 
             comparer = "/panasas/scratch/grp-mshalfon/Luna/" + res
