@@ -1,10 +1,13 @@
 #Making a 3D graph to show neg to random vs orig to random changes (in how good the tset is)
 
+#Code based off of: (citing sourcesish)
+#Basic graph format: https://plotly.com/r/3d-hover/
+#Changing hover text: https://stackoverflow.com/questions/65840085/how-to-overwrite-and-edit-the-hover-template-of-a-plotly-3d-object-in-r 
 
 library("readxl")
 library(plotly)
 
-#loads file into enviornment
+#loads file into environment
 randcompallData <-read_excel("compwithrandomcomb.xlsx")
 randcompnegData <- randcompallData[1:110,]
 randcomporigData <- randcompallData[111:220,]
