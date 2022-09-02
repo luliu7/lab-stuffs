@@ -1,7 +1,3 @@
-#All plots on one plot... 
-
-
-
 library(ggplot2)
 ###This program creates a simple box and whisker plot of negative and original for percent sensitivity and redfly recovery (for all methods together, imm only, and for each individual method) 
 
@@ -12,10 +8,9 @@ origimmData <- read.table("orig-imm-modified_pCRMeval.txt.bed", header=TRUE, sep
 negallData <-read.table("neg_all_modified_pCRMeval.txt.bed", header=TRUE, sep= "\t")
 origallData <- read.table("orig-all-modified_pCRMeval.txt.bed", header=TRUE, sep = "\t")
 all = TRUE
-par(mfrow=c(1,4)) #puts 4 graphs on same thingy
 
 if (all){
-  
+
   #Creating the list of "original" or "neg" onto one dataframe for easier access
   lenall <- length(unlist(negallData['PercentageTrainingSetSensitivity']))
   
@@ -29,7 +24,7 @@ if (all){
   
   ###### For all methods only ###
   
-  #Percentage Training Set sensitiity
+  #Percentage Training Set sensitivity
   
   allsen = boxplot(PercentageTrainingSetSensitivity ~ Dset, 
                    cumalldata,
@@ -42,38 +37,10 @@ if (all){
                    cumalldata,
                    main = "all Percent Redfly Recovery")
   
-  
-  #Percent Expression Pattern Recall
-  allexp = boxplot(percentageExpressionPatternRecall ~ Dset, 
-                   cumalldata,
-                   main = "all Percent Expression Pattern Recall")
-  
-  #Percent Expression Pattern Precision
-  
-  allper = boxplot(percentageExpressionPatternPrecision ~ Dset, 
-                   cumalldata,
-                   main = "all Percent Expression Pattern Precision")
-  
-  
-  
-  
-  
-  #  par(mfrow=c(1,4)) #puts 4 graphs on same thingy
-  #  boxplot(percentageExpressionPatternRecall ~ Dset, 
-  #          cumalldata,
-  #          main = "all Percent Expression Pattern Recall")
-  #  boxplot(percentageExpressionPatternPrecision ~ Dset, 
-  #          cumalldata,
-  #          main = "all Percent Expression Pattern Precision")
-  #  boxplot(PercentageTrainingSetSensitivity ~ Dset, 
-  #          cumalldata,
-  #          main = "all Percent sensitivity")
-  #  boxplot(PercentageRedflyRecovered ~ Dset, 
-  #            cumalldata,
-  #          main = "all Percent Redfly Recovery")
-  
+
 }
 ################################################################
+
 
 
 #Creating the list of "original" or "neg" onto one dataframe for easier access
@@ -103,31 +70,29 @@ immrec = boxplot(PercentageRedflyRecovered ~ Dset,
                  main = "imm Percent Redfly Recovery")
 
 
-#Percent Expression Pattern Recall
-immexp = boxplot(percentageExpressionPatternRecall ~ Dset, 
-                 cumimmdata,
-                 main = "imm Percent Expression Pattern Recall")
-
-#Percent Expression Pattern Precision
-
-immper = boxplot(percentageExpressionPatternPrecision ~ Dset, 
-                 cumimmdata,
-                 main = "imm Percent Expression Pattern Precision")
 
 
+if (all){
+
+###### For all original data (percents for each method)###
+
+thing3 = boxplot(PercentageTrainingSetSensitivity ~ Method, 
+                 origallData,
+                 main = "Original Percent sensitivity per method")
 
 
+thing3rec = boxplot(PercentageRedflyRecovered ~ Method, 
+                    origallData,
+                    main = "Original Percent redfly per method")
 
-#par(mfrow=c(1,4)) #puts 4 graphs on same thingy
-#boxplot(percentageExpressionPatternRecall ~ Dset, 
-#        cumimmdata,
-#        main = "imm Percent Expression Pattern Recall")
-#boxplot(percentageExpressionPatternPrecision ~ Dset, 
-#        cumimmdata,
-#        main = "imm Percent Expression Pattern Precision")
-#boxplot(PercentageTrainingSetSensitivity ~ Dset, 
-#        cumimmdata,
-#        main = "imm Percent sensitivity")
-#boxplot(PercentageRedflyRecovered ~ Dset, 
-#        cumimmdata,
-#        main = "imm Percent Redfly Recovery")
+###### For all negative data (percents for each method)###
+
+thing2 = boxplot(PercentageTrainingSetSensitivity ~ Method, 
+                 negallData,
+                 main = "Neg Percent sensitivity per method")
+
+
+thing2rec = boxplot(PercentageRedflyRecovered ~ Method, 
+                 negallData,
+                 main = "Neg Percent redfly per method")
+}
