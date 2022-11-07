@@ -1,0 +1,12 @@
+3L	6832750	6833330	80.4	10.989	FBgn0266590	FBgn0266590	32699	downstream	lr=7,lr=8,lr=9	FBgn0086680	FBgn0086680	37889	downstream	lr=7,lr=8,lr=9	adult_foregut	imm	153
+3L	6832750	6833300	46.2	9.51095	FBgn0266590	FBgn0266590	32699	downstream	lr=7,lr=8,lr=9	FBgn0086680	FBgn0086680	37859	downstream	lr=7,lr=8,lr=9	adult_midgut	imm	272
+2L	6473000	6473750	581.8	17.9633	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1438	downstream	lr=1,lr=2	emb-larv_excretory	hexmcd	14
+2L	6473110	6473940	228.4	11.543	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1328	downstream	lr=1,lr=2	emb-larv_excretory	imm	48
+2L	6473000	6473750	254.8	20.6568	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1438	downstream	lr=1,lr=2	embryonic_epidermis	hexmcd	427
+3L	7833500	7834000	4.7	0.3721	FBgn0016694	FBgn0016694	0	inside	lr=1	FBgn0052369	FBgn0052369	23675	upstream	lr=1	female_reproductive	pac	219
+2L	6473000	6473750	457.4	17.3242	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1438	downstream	lr=1,lr=2	malpig.mapping1	hexmcd	33
+2L	6473090	6473930	157.8	10.1415	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1348	downstream	lr=1,lr=2	malpig.mapping1	imm	107
+X	7213250	7214000	292.2	17.7818	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1,lr=2	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1,lr=2	mapping1.cardiac_mesoderm	hexmcd	88
+3L	7833250	7834000	3.0	0.4484	FBgn0016694	FBgn0016694	0	inside	lr=1	FBgn0052369	FBgn0052369	23675	upstream	lr=1	mapping1.female_gonad	pac	708
+X	7213500	7214000	86.7	7.7382	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1,lr=2,lr=3	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1,lr=2,lr=3,lr=4,lr=5	mapping2.mesoderm	hexmcd	281
+3R	23145200	23145740	28.2	5.9488199999999996	FBgn0004644	FBgn0004644	3334	upstream	lr=3	FBgn0004395	FBgn0004395	4453	downstream	lr=3	mapping2.mesoderm	imm	524

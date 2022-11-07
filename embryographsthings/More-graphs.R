@@ -1,5 +1,4 @@
 #All plots on one plot... 
-#The acutal one I swear!
 
 
 library(ggpubr)
@@ -259,25 +258,37 @@ ggplot(newcumalldata, aes(x=names, y=stuffs, fill=Dset)) + geom_point(position=p
 
 
 # Change line types and point shapes
-#recallplot <- ggplot(cumalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
+recallplot <- ggplot(cumalldata, aes(x=Dset, y=percentageExpressionPatternRecall, group=TsetName))+ geom_line(aes(color=TsetName))
 
-#recallplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Recall per tset")
-
-
-#precisionplot <- ggplot(cumalldata, aes(x=Dset, y=percentageExpressionPatternPrecision, group=TsetName))+ geom_line(aes(color=TsetName))
-
-#precisionplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Precision per tset")
+recallplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Recall per tset")
 
 
-#recoveryplot <- ggplot(cumalldata, aes(x=Dset, y=PercentageRedflyRecovered, group=TsetName))+ geom_line(aes(color=TsetName))
+precisionplot <- ggplot(cumalldata, aes(x=Dset, y=percentageExpressionPatternPrecision, group=TsetName))+ geom_line(aes(color=TsetName))
 
-#recoveryplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Redfly Recovery per tset")
+precisionplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Expression Pattern Precision per tset")
+
+
+recoveryplot <- ggplot(cumalldata, aes(x=Dset, y=PercentageRedflyRecovered, group=TsetName))+ geom_line(aes(color=TsetName))
+
+recoveryplot + scale_color_grey() + theme_classic() + theme(legend.position="none") + ggtitle("Percent Redfly Recovery per tset")
 
 
 
-# Sensitivity plot 
+# Sensitivity plot for imm only
+negses <- c(unlist(negimmData['PercentageTrainingSetSensitivity']))
+origses <- c(unlist(origimmData['PercentageTrainingSetSensitivity']))
+tsetlis <- c(unlist(origimmData['TsetName']))
 
-senssplot <- ggplot(alldata, aes(x=Type, y=Sensitivity, group=Tset))+ geom_line(aes(color=Tset))
+ts <- c(rep(tsetlis, 2))
+listses <- c(negses,origses)
+
+alllineofnegs = c(rep("Negative", length(tsetlis)))
+alllineoforig = c(rep("Original", length(tsetlis)))
+
+listlin <- c(alllineofnegs,alllineoforig)
+
+df <- data.frame(listses, listlin,ts)
+senssplot <- ggplot(df, aes(x=listlin, y=listses, group=ts))+ geom_line(aes(color=ts))
 
 senssplot + theme_minimal() + theme(legend.position="none") + ggtitle("Percent Training Set Sensitivity per tset")
 

@@ -8,7 +8,7 @@ library("readxl")
 library(plotly)
 
 #loads file into environment
-randcompallData <-read_excel("compwithrandomcomb.xlsx")
+randcompallData <-read_excel("oldfiles/compwithrandomcomb.xlsx")
 randcompnegData <- randcompallData[1:110,]
 randcomporigData <- randcompallData[111:220,]
 

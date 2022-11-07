@@ -257,11 +257,11 @@ newcumalldata$Dset <- dsetline
 
 #Same graph, using T test instead
 ggplot(newcumalldata, aes(x=names, y=stuffs, fill=Dset)) + geom_point(position=position_jitterdodge(), size = 0.2) +
-  geom_boxplot(alpha = 0.8) + labs(fill = "Type of\nDataset", title="Plot of percentages for different parts",
+  geom_boxplot(alpha = 0.8) + labs(fill = "Type of\nDataset", title="Plot of percentages for different parts without new tset",
                                    x ="", y = "Percentage") + theme(axis.text.x = element_text(size = 6)) +  geom_signif(
                                      y_position = c(0.6, 0.2,0.6,1.05), xmin = c(0.8, 1.8, 2.8, 3.8), xmax = c(1.2, 2.2, 3.2, 4.2),
                                      annotation = c("NS", "NS", "****", "**"), tip_length = 0
-                                   ) +stat_compare_means(method = "t.test",aes(label =  ..p.signif..))
+                                   ) +stat_compare_means(method = "t.test",aes(label =  ..p.format..))
 
 #Shrinking the dset to 220 units (average of all three methods)
 #for(x in negallData$TsetName)

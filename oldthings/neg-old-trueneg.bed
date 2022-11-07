@@ -1,0 +1,13 @@
+3L	6832750	6833340	90.2	11.4086	FBgn0266590	FBgn0266590	32699	downstream	lr=7,lr=8,lr=9	FBgn0086680	FBgn0086680	37899	downstream	lr=7,lr=8,lr=9	adult_foregut	imm	147
+3L	6832750	6833310	54.5	9.929969999999999	FBgn0266590	FBgn0266590	32699	downstream	lr=7,lr=8,lr=9	FBgn0086680	FBgn0086680	37869	downstream	lr=7,lr=8,lr=9	adult_midgut	imm	235
+2L	6473000	6473750	598.6	18.4158	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1438	downstream	lr=1,lr=2	emb-larv_excretory	hexmcd	14
+2L	6473090	6473940	274.2	11.8593	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1348	downstream	lr=1,lr=2	emb-larv_excretory	imm	38
+2L	6473000	6473750	260.5	21.0925	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1438	downstream	lr=1,lr=2	embryonic_epidermis	hexmcd	423
+3L	7833250	7834000	3.2	0.3601	FBgn0016694	FBgn0016694	0	inside	lr=1,lr=2,lr=3	FBgn0052369	FBgn0052369	23675	upstream	lr=1,lr=2	embryonic_midgut	pac	562
+3L	7833500	7834000	4.3	0.3726	FBgn0016694	FBgn0016694	0	inside	lr=1	FBgn0052369	FBgn0052369	23675	upstream	lr=1	female_reproductive	pac	276
+2L	6473000	6473750	496.3	17.8083	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1438	downstream	lr=1,lr=2	malpig.mapping1	hexmcd	27
+2L	6473090	6473930	179.9	10.5265	FBgn0259749	FBgn0259749	0	inside	lr=1,lr=2	FBgn0031818	FBgn0031818	1348	downstream	lr=1,lr=2	malpig.mapping1	imm	98
+X	7213250	7214000	296.9	18.0561	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1,lr=2	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1	mapping1.cardiac_mesoderm	hexmcd	84
+3L	7833250	7834000	3.0	0.4484	FBgn0016694	FBgn0016694	0	inside	lr=1	FBgn0052369	FBgn0052369	23675	upstream	lr=1	mapping1.female_gonad	pac	708
+X	7213500	7214000	102.2	8.03582	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1,lr=2,lr=3	FBgn0029939,FBgn0265457	FBgn0029939,FBgn0265457	0	inside	lr=1,lr=2,lr=3	mapping2.mesoderm	hexmcd	217
+X	9389250	9390000	2.9	0.43700000000000006	FBgn0261260	FBgn0261260	0	inside	lr=1	FBgn0026149	FBgn0026149	30906	downstream	lr=1,lr=2	neuron	pac	761
