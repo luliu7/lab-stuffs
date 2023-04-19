@@ -1,44 +1,48 @@
 library("readxl")
 library(ggpubr)
 library(ggplot2)
+library(plotly)
+library(dplyr)
+
 
 #loads file into environment
-alldata <-read_excel("embryodatathing.xlsx")
-squisheddata <-read_excel("allinone.xlsx")
+#alldata <-read_excel("final_uhh_braincan'tname.xlsx")
+alldata <-read_excel("new_imm_2-22-23.xlsx")
+#squisheddata <-read_excel("smolbed.xlsx")
 
 library(plyr)
-mu <- ddply(alldata, "Type", summarise, grp.mean=mean(scrmshawhits))
-head(mu)
+#mu <- ddply(alldata, "Type", summarise, grp.mean=mean(scrmshawhits))
+#head(mu)
 
 #Makes a histogram to compare number of scrmshawhitshaw hits
-ggplot(alldata, aes(x=scrmshawhits, color=Type, fill=Type)) +#stat_compare_means(method = "t.test")+
-  geom_histogram(position="identity", alpha=0.5)+
+#ggplot(alldata, aes(x=scrmshawhits, color=Type, fill=Type)) +#stat_compare_means(method = "t.test")+
+#  geom_histogram(position="identity", alpha=0.5)+
   #geom_histogram(aes(y=..density..), position="identity", alpha=0.5)+
-  geom_density(alpha=0.2)+
-  geom_vline(data=mu, aes(xintercept=grp.mean, color=Type),
-             linetype="dashed")+
-  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
-  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
-  labs(title="Comparing Number of Hits Between Negative and Original",x="Number of hits from scrmshawhitshaw", y = "Count")+
+#  geom_density(alpha=0.2)+
+#  geom_vline(data=mu, aes(xintercept=grp.mean, color=Type),
+#             linetype="dashed")+
+#  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+#  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+#  labs(title="Comparing Number of Hits Between Negative and Original",x="Number of hits from scrmshawhitshaw", y = "Count")+
   #labs(title="Comparing Number of Hits Between Negative and Original",x="Number of hits from scrmshawhitshaw", y = "Density")+
   #stat_compare_means(method = "t.test", aes(label =  ..p.format..))+
-  theme_classic()
+#  theme_classic()
 
 #Makes density plot for compare scrmshawhitshaw hits
-ggplot(alldata, aes(x=scrmshawhits, color=Type, fill = Type)) +
-  geom_density( alpha = 0.2)+
-  geom_vline(data=mu, aes(xintercept=grp.mean, color=Type),
-             linetype="dashed")+
-  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+#ggplot(alldata, aes(x=scrmshawhits, color=Type, fill = Type)) +
+#  geom_density( alpha = 0.2)+
+#  geom_vline(data=mu, aes(xintercept=grp.mean, color=Type),
+#             linetype="dashed")+
+#  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
   
-  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))
+#  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))
 
 
-ggplot(alldata, aes(x = Type, y = scrmshawhits, fill = Type)) +
-  geom_boxplot() + ggtitle("Number of hits from scrmshaw")+ 
-  stat_compare_means(method = "t.test", aes(label =  ..p.format..))+  geom_signif(
-    y_position = c(2700), xmin = c(0.8), xmax = c(2.2),
-    annotation = c("*"), tip_length = 0.01) 
+#ggplot(alldata, aes(x = Type, y = scrmshawhits, fill = Type)) +
+#  geom_boxplot() + ggtitle("Number of hits from scrmshaw")+ 
+#  stat_compare_means(method = "t.test", aes(label =  ..p.format..))+  geom_signif(
+#    y_position = c(2700), xmin = c(0.8), xmax = c(2.2),
+#    annotation = c("*"), tip_length = 0.01) 
 
 
 
@@ -46,16 +50,93 @@ ggplot(alldata, aes(x = Type, y = scrmshawhits, fill = Type)) +
 
 
 #Same graph, using T test instead
-ggplot(squisheddata, aes(x=Method, y=Value, fill=Type)) + geom_point(position=position_jitterdodge(), size = 0.2) +
-  geom_boxplot(alpha = 0.8) + labs(fill = "Type of\nDataset", title="Plot of percentages for different parts",
-                                   x ="", y = "Percentage") + theme(axis.text.x = element_text(size = 6)) +  geom_signif(
-                                     y_position = c(1.0, 0.05,0.2,0.2), xmin = c(0.8, 1.8, 2.8, 3.8), xmax = c(1.2, 2.2, 3.2, 4.2),
-                                     annotation = c("*", "**", "**", "NS"), tip_length = 0
-                                   ) +stat_compare_means(method = "t.test",aes(label =  ..p.format..))
+#ggplot(squisheddata, aes(x=Method, y=Value, fill=Type)) + geom_point(position=position_jitterdodge(), size = 0.2) +
+#  geom_boxplot(alpha = 0.8) + labs(fill = "Type of\nDataset", title="Plot of percentages for different measures",
+#                                   x ="", y = "Percentage (%)") + theme(axis.text.x = element_text(size = 6)) +  geom_signif(
+#                                     y_position = c(90, 10, 10, 75, 60), xmin = c(0.8, 1.8, 2.8, 3.8, 4.8), xmax = c(1.2, 2.2, 3.2, 4.2, 5.2),
+#                                     annotation = c("NS", "***", "**", "****", "NS"), tip_length = 0
+#                                   ) +stat_compare_means(method = "t.test",aes(label =  ..p.format..))
 
 
 
-### Bar graphs ###
+
+#a <- c(unique(alldata$Time))
+
+
+########### Bar graphs ############
+#Recovery
+recovery <- ggplot(alldata, aes(x=factor(Time, level = unique(Time)), y=Recovery, fill = Type, col = Type)) + 
+  geom_boxplot(alpha = 0.8) + 
+  labs(fill = "Type of\nDataset", title=paste("Recovery percentage for all times"), x ="", y = "Recovery") +
+  stat_compare_means(method = "t.test", aes(label =  ..p.signif..))+ geom_point(position=position_jitterdodge(), size = 0.5)
+recovery
+ggplotly(recovery)
+
+
+a <- ggplot(alldata, aes(x=Type, y=Recovery, fill = Type)) + 
+  geom_boxplot(alpha = 0.8) + 
+  labs(fill = "Type of\nDataset", title=paste("Recovery percentage for all times"), x ="", y = "Recovery") +
+  stat_compare_means(method = "t.test", aes(label =  ..p.signif..))+ geom_point(position=position_jitterdodge(), size = 0.5)
+  
+ggplotly(a)
+
+#Sensitivity
+sensitivity <- ggplot(alldata, aes(x=factor(Time, level = unique(Time)), y=Sensitivity, fill = Type)) + 
+  geom_boxplot(alpha = 0.8) + 
+  labs(fill = "Type of\nDataset", title=paste("Sensitivity percentage for all times"), x ="", y = "Sensitivity") +
+  stat_compare_means(method = "t.test", aes(label =  ..p.signif..))+ geom_point(position=position_jitterdodge(), size = 0.5)
+
+sensitivity
+ggplotly(sensitivity)
+
+b <- ggplot(alldata, aes(x=Type, y=Sensitivity, fill = Type)) + 
+  geom_boxplot(alpha = 0.8) + 
+  labs(fill = "Type of\nDataset", title=paste("Sensitivity percentage for all times"), x ="", y = "Sensitivity") +
+  stat_compare_means(method = "t.test", aes(label =  ..p.signif..))+ geom_point(position=position_jitterdodge(), size = 0.5)
+ggplotly(b)
+
+#Precision
+ggplot(alldata, aes(x=factor(Time, level = unique(Time)), y=Precision, fill = Type)) + 
+  geom_boxplot(alpha = 0.8) + 
+  labs(fill = "Type of\nDataset", title=paste("Precision percentage for all times"), x ="", y = "Precision") +
+  stat_compare_means(method = "t.test", aes(label =  ..p.signif..))+ geom_point(position=position_jitterdodge(), size = 0.5)
+
+
+
+#Recall1
+ggplot(alldata, aes(x=factor(Time, level = unique(Time)), y=Recall1, fill = Type)) + 
+  geom_boxplot(alpha = 0.8) + 
+  labs(fill = "Type of\nDataset", title=paste("Recall1 percentage for all times"), x ="", y = "Recall1") +
+  stat_compare_means(method = "t.test", aes(label =  ..p.signif..))+ geom_point(position=position_jitterdodge(), size = 0.5)
+
+
+
+#Recall2
+ggplot(alldata, aes(x=factor(Time, level = unique(Time)), y=Recall2, fill = Type)) + 
+  geom_boxplot(alpha = 0.8) + 
+  labs(fill = "Type of\nDataset", title=paste("Recall2 percentage for all times"), x ="", y = "Recall2") +
+  stat_compare_means(method = "t.test", aes(label =  ..p.signif..))+ geom_point(position=position_jitterdodge(), size = 0.5)
+
+
+
+
+
+
+#ggplot(alldata, aes(x=Type, y=Recall2, fill=Type)) + geom_point(position=position_jitterdodge(), size = 0.2) +
+#  geom_boxplot(alpha = 0.8) + labs(fill = "Type of\nDataset", title=paste("Recall2 Percentage",thingy),
+#                                   x ="", y = "Recall2") + theme(axis.text.x = element_text(size = 6)) +  geom_signif(
+#                                     y_position = c(7), xmin = c(1), xmax = c(2),
+#                                     annotation = c("NS"), tip_length = 0.05
+#                                   ) +stat_compare_means(method = "t.test")#,aes(label =  ..p.signif..))
+
+
+
+
+###########################
+#Old
+
+
+
 
 immexp = boxplot(Recall2 ~ Type, 
                  alldata,
@@ -85,20 +166,20 @@ immrec = boxplot(Recovery ~ Type,
 
 ### Line graphs ###
 recallplot <- ggplot(alldata, aes(x=Type, y=Recall2, group=Tset))+ geom_line(aes(color=Tset))
-
+ggplotly(recallplot)
 recallplot  + theme_classic() + theme(legend.position="none") + ggtitle("Percent Recall per tset")
 
 
 precisionplot <- ggplot(alldata, aes(x=Type, y=Precision, group=Tset))+ geom_line(aes(color=Tset))
-
+ggplotly(precisionplot)
 precisionplot  + theme_classic() + theme(legend.position="none") + ggtitle("Percent Precision per tset")
 
 
 recoveryplot <- ggplot(alldata, aes(x=Type, y=Recovery, group=Tset))+ geom_line(aes(color=Tset))
-
+ggplotly(recoveryplot)
 recoveryplot  + theme_classic() + theme(legend.position="none") + ggtitle("Percent Recovery per tset")
 
 
 sensplot <- ggplot(alldata, aes(x=Type, y=Sensitivity, group=Tset))+ geom_line(aes(color=Tset))
-
+ggplotly(sensplot)
 sensplot  + theme_classic() + theme(legend.position="none") + ggtitle("Percent Sensitivity per tset")
