@@ -10,7 +10,7 @@
   * Document of processes
    * Python code
   * R code
-* SCRMshaw -> pCRMeval (Spring 2022)
+* SCRMshaw -> pCRMeval (Spring 2023)
   * Document of processes
   * Python code
   * R code
